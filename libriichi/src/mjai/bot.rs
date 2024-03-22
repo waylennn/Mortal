@@ -8,6 +8,7 @@ use pyo3::prelude::*;
 use serde_json as json;
 
 #[pyclass]
+#[derive(Clone)]
 pub struct Bot {
     agent: MortalBatchAgent,
     state: PlayerState,
@@ -77,5 +78,9 @@ impl Bot {
 
         let ret = json::to_string(&reaction)?;
         Ok(Some(ret))
+    }
+
+    fn copy(&mut self) -> Self {
+        return self.clone();
     }
 }
