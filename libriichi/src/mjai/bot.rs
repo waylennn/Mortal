@@ -43,7 +43,7 @@ impl Bot {
 
     #[pyo3(name = "copy")]
     #[pyo3(signature = ())]
-    fn copy_py(&mut self, py: Python<'_>) -> Self {
+    fn copy_py(&mut self, py: Python<'_>) -> Result<Self> {
         py.allow_threads(move || self.copy())
     }
 }
@@ -86,7 +86,7 @@ impl Bot {
         Ok(Some(ret))
     }
 
-    fn copy(&mut self) -> Self {
-        return self.clone();
+    fn copy(&mut self) -> Result<Self> {
+        return Ok(self.clone());
     }
 }
