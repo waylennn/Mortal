@@ -15,6 +15,7 @@ use parking_lot::Mutex;
 use pyo3::intern;
 use pyo3::prelude::*;
 
+#[derive(Clone)]
 pub struct MortalBatchAgent {
     engine: PyObject,
     is_oracle: bool,
