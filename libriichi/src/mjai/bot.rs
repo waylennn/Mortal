@@ -40,6 +40,12 @@ impl Bot {
     fn react_py(&mut self, line: &str, can_act: bool, py: Python<'_>) -> Result<Option<String>> {
         py.allow_threads(move || self.react(line, can_act))
     }
+
+    #[pyo3(name = "copy")]
+    #[pyo3(signature = ( /, *))]
+    fn copy_py(&mut self, py: Python<'_>) -> Self {
+        py.allow_threads(move || self.copy())
+    }
 }
 
 impl Bot {
