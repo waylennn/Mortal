@@ -42,7 +42,7 @@ impl Bot {
     }
 
     #[pyo3(name = "copy")]
-    #[pyo3(signature = ( /, *))]
+    #[pyo3(signature = ())]
     fn copy_py(&mut self, py: Python<'_>) -> Self {
         py.allow_threads(move || self.copy())
     }
